@@ -1,0 +1,22 @@
+digraph p_Deplacement {
+size="8,10";
+  GT [shape=box,style=dotted,label="Deplacement"];
+  GT -> S9;
+	S9 -> S2  [color=black,style=solid,label="(((Dir==Ouest)&&(p==1)))"];
+	S9 -> S4  [color=black,style=solid,label="(((Dir==Est)&&(p==9)))"];
+	S9 -> S6  [color=black,style=solid,label="(((Dir==Ouest)&&(p!=1)))"];
+	S9 -> S8  [color=black,style=solid,label="(((Dir==Est)&&(p!=1)))"];
+	S2 -> S9  [color=black,style=solid,label="Dir = Est"];
+	S4 -> S9  [color=black,style=solid,label="Dir = Ouest"];
+	S6 -> S9  [color=black,style=solid,label="p = (p-1)"];
+	S8 -> S9  [color=black,style=solid,label="p = (p+1)"];
+}
+digraph init {
+size="8,10";
+  GT [shape=box,style=dotted,label="init"];
+  GT -> S1;
+	S1 -> S2  [color=black,style=solid,label="(run Deplacement(Ouest,1))"];
+	S2 -> S3  [color=black,style=solid,label="(run Deplacement(Est,5))"];
+	S3 -> S0  [color=black,style=solid,label="-end-"];
+  S3 [color=blue,style=bold,shape=box];
+}
